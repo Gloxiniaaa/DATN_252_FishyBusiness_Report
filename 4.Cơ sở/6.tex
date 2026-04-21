@@ -1,0 +1,137 @@
+\subsection{Design Pattern trong dự án}
+\subsubsection{Singleton}
+
+Singleton là một trong những mẫu thiết kế phổ biến nhất trong phát triển game, đặc biệt trong Unity. Mẫu này đảm bảo chỉ tồn tại duy nhất một thể hiện (\textit{instance}) của một lớp trong suốt vòng đời ứng dụng, đồng thời cung cấp điểm truy cập toàn cục tới thể hiện đó. Singleton thường được sử dụng cho các hệ thống quan trọng như \texttt{GameManager}, \texttt{AudioManager}, \texttt{UIManager} hoặc \texttt{NetworkManager}.
+
+\begin{enumerate}[$\bullet$]
+    \item{\textbf{Ưu điểm:}}
+    \begin{enumerate}[+]
+    \item \textbf{Dễ truy cập và tiện lợi:} Mọi thành phần trong game có thể dễ dàng lấy instance thông qua thuộc tính tĩnh, ví dụ \texttt{GameManager.Instance}, giảm nhu cầu truyền tham chiếu.
+    \item \textbf{Đảm bảo tính duy nhất:} Ngăn chặn việc tạo nhiều đối tượng quản lý gây xung đột tài nguyên hoặc trạng thái.
+    \item \textbf{Phù hợp cho các hệ thống global:} Các hệ thống cần tồn tại xuyên suốt nhiều scene có thể hoạt động ổn định nhờ \texttt{DontDestroyOnLoad}.
+    \item \textbf{Dễ triển khai:} Chỉ cần cấu trúc đơn giản, thuận lợi cho cả lập trình viên mới.
+\end{enumerate}
+\newpage
+\item{\textbf{Nhược điểm:}}
+\begin{enumerate}[+]
+    \item \textbf{Tạo ra Global State:} Việc quản lý trạng thái toàn cục khiến quá trình debug khó khăn hơn và dễ phát sinh lỗi không lường trước.
+    \item \textbf{Tăng sự phụ thuộc (tight coupling):} Các lớp trong hệ thống dễ bị phụ thuộc trực tiếp vào Singleton, dẫn đến kiến trúc kém linh hoạt.
+    \item \textbf{Khó khăn trong Unit Testing:} Singleton sử dụng trạng thái tĩnh, khiến việc reset hoặc mock dữ liệu trở nên phức tạp.
+    \item \textbf{Dễ bị lạm dụng:} Việc dùng Singleton không hợp lý có thể phá vỡ tính module hóa và vi phạm nguyên tắc thiết kế SOLID.
+    \item \textbf{Vấn đề cạnh tranh tài nguyên (concurrency):} Trong môi trường multiplayer hoặc multithread, Singleton cần cơ chế đồng bộ để tránh lỗi race condition.
+\end{enumerate}
+\end{enumerate}
+
+
+% Singleton đảm bảo chỉ có một instance của class, cung cấp global access. Trong Unity, áp dụng cho GameManager để quản lý state game (score, level). Implement: Private constructor, static instance. Ưu điểm: Dễ truy cập, tránh duplicate. Nhược điểm: Khó test, có thể gây global state issues.
+
+\subsubsection{Observer Pattern}
+
+Observer Pattern là một mẫu thiết kế hành vi cho phép nhiều đối tượng (\textit{observers}) đăng ký và theo dõi sự thay đổi từ một nguồn phát (\textit{subject}). Khi trạng thái của \textit{subject} thay đổi, tất cả các \textit{observers} sẽ tự động được thông báo và cập nhật theo. Phương pháp này giúp loại bỏ sự phụ thuộc chặt chẽ giữa các đối tượng và mang lại khả năng mở rộng linh hoạt, đặc biệt trong những hệ thống có nhiều thành phần cần phản ứng đồng bộ với dữ liệu hoặc sự kiện.
+
+Trong phát triển game bằng Unity, Observer Pattern trở nên đặc biệt hiệu quả nhờ kiến trúc dựa trên \texttt{ScriptableObject} theo khuyến nghị trong bài trình bày \textit{“Game Architecture with Scriptable Objects”} tại Unite Austin 2017 \cite{hipple2017}. Thay vì để các GameObject gọi trực tiếp lẫn nhau hoặc tạo chuỗi tham chiếu phức tạp, Unity có thể sử dụng các \textit{Event Channels}—một dạng ScriptableObject đóng vai trò trung gian. Các hệ thống khác nhau (UI, gameplay, NPC, player controller, animation, v.v.) chỉ cần đăng ký lắng nghe các sự kiện được phát ra từ một Event Channel, mà không cần biết đối tượng nào đã gửi sự kiện.
+
+Cách tiếp cận này mang lại nhiều ưu điểm:
+\begin{itemize}
+    \item \textbf{Giảm phụ thuộc (decoupling)} giữa các hệ thống: sender và receiver không cần tham chiếu trực tiếp đến nhau.
+    \item \textbf{Dễ mở rộng và bảo trì}: thêm hoặc bỏ một observer không ảnh hưởng luồng xử lý.
+    \item \textbf{Tái sử dụng logic}: cùng một sự kiện có thể được nhiều hệ thống lắng nghe, như UI cập nhật thông tin, hiệu ứng âm thanh, hoặc logic gameplay.
+    \item \textbf{Thân thiện với workflow của Unity}: ScriptableObject sống độc lập với scene, giúp các sự kiện có thể dùng chung xuyên suốt toàn bộ trò chơi.
+\end{itemize}
+
+Với dự án, Observer Pattern được ứng dụng vào nhiều cơ chế như: truyền sự kiện thay đổi trạng thái người chơi, thông báo khi người chơi tương tác đồ vật, cập nhật UI theo hành động trong Cabin, hay đồng bộ các sự kiện bắt đầu/thoát khỏi bàn board game. Nhờ sử dụng Event Channels, các thành phần trong game chỉ cần đăng ký lắng nghe sự kiện (OnGameStart, OnSitDown, OnInteractObject, \ldots) mà không cần duy trì quan hệ tham chiếu phức tạp giữa các script.
+
+Áp dụng Observer Pattern theo phương pháp từ Unite Austin 2017 giúp kiến trúc của trò chơi gọn gàng hơn, dễ mở rộng và ít lỗi hơn, đồng thời phù hợp với quy mô một dự án nhiều người chơi, nơi các hệ thống UI, network, hành vi nhân vật và bàn board game cần được đồng bộ và hoạt động trơn tru.
+
+\begin{lstlisting}[style=csharpstyle, caption={Event Channel trong dự án}]
+using UnityEngine;
+using UnityEngine.Events;
+
+/// <summary>
+/// This class is used for Events that have no arguments (Example: Start game event)
+/// </summary>
+[CreateAssetMenu(menuName = "Events/Void Event Channel")]
+public class VoidEventChannelSO : ScriptableObject
+{
+    public UnityAction OnEventRaised = delegate { };
+
+    public void RaiseEvent() => OnEventRaised.Invoke();
+}
+\end{lstlisting}
+
+
+% Observer cho phép objects subscribe/unsubscribe để nhận notify khi state thay đổi, decoupling components. Trong Unity, dùng cho event system như player death notify UI update. Implement qua UnityEvent hoặc custom. Ưu điểm: Loose coupling, dễ mở rộng.
+\subsubsection{State Pattern}
+
+State Pattern là một mẫu thiết kế quan trọng trong phát triển game hiện đại, được trình bày rõ trong cuốn \textit{Game Programming Algorithms and Techniques}\cite{madhav2013}. Mục tiêu của mẫu thiết kế này là quản lý hành vi của một thực thể thông qua nhiều trạng thái khác nhau mà không cần sử dụng các cấu trúc điều kiện phức tạp như \texttt{if-else} hoặc \texttt{switch-case}. \\
+
+Thay vào đó, mỗi trạng thái được tách thành một lớp độc lập, chịu trách nhiệm cho ba giai đoạn vòng đời chính: \textbf{OnEnter}, \textbf{OnTick} và \textbf{OnExit}. Cách tiếp cận này mang lại nhiều lợi ích: mã nguồn rõ ràng và dễ bảo trì, hành vi được tách bạch theo trạng thái, dễ mở rộng thêm trạng thái mới và dễ dàng kiểm soát quá trình chuyển đổi giữa các trạng thái.\\
+
+Trong dự án, người chơi có nhiều trạng thái khác nhau như \textit{Idle}, \textit{Move}, \textit{Jump}, \textit{Sit}, v.v. Mỗi trạng thái được xây dựng dựa trên interface \texttt{IState} để đảm bảo cấu trúc nhất quán và dễ dàng quản lý.
+
+\newpage 
+\begin{lstlisting}[style=csharpstyle, caption={Interface IState trong dự án}]
+public interface IState
+{
+    public void OnEnter();
+    public void OnTick();
+    public void OnExit();
+}
+\end{lstlisting}
+
+Interface trên định nghĩa một quy tắc chung cho tất cả các trạng thái. Mọi trạng thái mới đều phải thực hiện ba phương thức này, từ đó đảm bảo rằng vòng đời của trạng thái được tuân thủ chặt chẽ.
+
+\begin{lstlisting}[style=csharpstyle, caption={Ví dụ: IdleState}]
+public class IdleState : IState
+{
+    protected Animator _animator;
+    protected PlayerController _host;   
+    protected static readonly int _animHash = Animator.StringToHash("Idle");
+
+    public IdleState(PlayerController host, Animator animator)
+    {
+        _host = host;
+        _animator = animator;
+    }
+
+    public virtual void OnEnter()
+    {
+        _animator.Play(_animHash);
+        _host.Movement = Vector3.zero;
+    }
+
+    public virtual void OnExit() { }
+
+    public virtual void OnTick() { }
+}
+\end{lstlisting}
+
+Ví dụ trên mô tả trạng thái \textit{Idle}. Khi bước vào trạng thái này, nhân vật sẽ phát animation đứng yên và đặt vector chuyển động về 0. Trạng thái tự quản lý hành vi của nó, không gây ảnh hưởng đến các trạng thái khác, đúng theo tinh thần của State Pattern.
+
+\begin{lstlisting}[style=csharpstyle, caption={Hàm chuyển trạng thái trong State Machine}]
+private void ToState(IState newState)
+{
+    if (_currentState == newState) return;
+    _currentState.OnExit();
+    _currentState = newState;
+    _currentState.OnEnter();
+}
+\end{lstlisting}
+
+Hàm \texttt{ToState} là trung tâm của hệ thống State Machine: đảm bảo quá trình thoát khỏi trạng thái cũ và khởi tạo trạng thái mới được thực hiện đúng thứ tự. Đồng thời, việc gọi \texttt{OnTick} mỗi khung hình sẽ giúp trạng thái hiện tại xử lý logic của nó một cách độc lập.
+
+\begin{lstlisting}[style=csharpstyle, caption={Hàm Update trong game loop}]
+void Update()
+{
+    if (!IsOwner)
+        return;
+    _currentState.OnTick();
+}
+\end{lstlisting}
+
+Tổng kết lại, việc áp dụng State Pattern giúp hệ thống điều khiển nhân vật trong dự án trở nên linh hoạt, dễ mở rộng, rõ ràng và ít lỗi hơn, phù hợp với kiến trúc được khuyến nghị trong tài liệu của Sanjay Madhav.
+
+% Dựa theo giải pháp State Pattern trong cuốn sách Game Programming Algorhitms and Techniques của tác giả Sanjay Madhav
+
+
+% State pattern cho phép object thay đổi behavior khi state thay đổi, như player states (idle, running, jumping). Strategy tương tự nhưng cho algorithms interchangeable, như AI behaviors (patrol, attack). Trong dự án, dùng cho player controller và enemy AI. Ưu điểm: Clean code, dễ maintain.

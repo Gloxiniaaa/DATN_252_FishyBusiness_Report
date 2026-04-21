@@ -1,0 +1,329 @@
+\section{Tổng kết}
+Dựa vào các phần được trình bày trước đó, nhóm thực hiện đánh giá tổng quan về trò chơi trong phần này, cùng với các công việc đã đóng góp của từng thành viên trong nhóm và kế hoạch tương lai cho trò chơi.
+\subsection{Đánh giá chung}
+Đến thời điểm hiện tại, dự án Fishy Business đã hoàn thiện được phiên bản release có thể chơi được theo đúng định hướng ban đầu. Để đạt được kết quả này, nhóm đã duy trì được tiến độ ổn định, phối hợp hiệu quả giữa các thành viên và luôn tập trung vào những yếu tố cốt lõi của trò chơi, tránh lan man sang các tính năng chưa cần thiết.
+
+Mục tiêu của dự án là xây dựng một trò chơi board game 3D mang tính giải trí cao, hướng đến trải nghiệm vui vẻ và tương tác giữa các nhóm bạn. Người chơi sẽ điều khiển nhân vật của mình di chuyển trên bàn chơi, tham gia vào các hoạt động cạnh tranh, tương tác và tạo ra những tình huống bất ngờ, thú vị. Trò chơi tập trung vào yếu tố multiplayer, cho phép nhiều người chơi tham gia cùng lúc.
+
+Hiện tại, nhóm đã hoàn thiện các cơ chế chính của trò chơi bao gồm hệ thống di chuyển nhân vật, tương tác trên board, cơ chế chơi nhiều người và đồng bộ dữ liệu giữa các client. Bên cạnh đó, nhiều cải tiến cũng đã được bổ sung so với các phiên bản trước như tối ưu trải nghiệm người chơi, cải thiện độ mượt của gameplay và sửa các lỗi phát sinh trong quá trình phát triển.
+
+Tuy nhiên, dự án vẫn còn đối mặt với một số thách thức cần giải quyết trong thời gian tới. Một trong những vấn đề quan trọng là tối ưu hiệu suất để đảm bảo trò chơi hoạt động ổn định trên nhiều nền tảng khác nhau. Ngoài ra, việc nâng cao chất lượng hệ thống multiplayer, giảm độ trễ và đảm bảo đồng bộ chính xác giữa các người chơi cũng là mục tiêu quan trọng để cải thiện trải nghiệm tổng thể. Việc thu thập và phân tích hành vi người chơi trong tương lai cũng sẽ giúp nhóm điều chỉnh gameplay hợp lý hơn, từ đó nâng cao tính hấp dẫn và giữ chân người chơi lâu dài.
+
+Trong quá trình phát triển, nhóm đã tích lũy được nhiều kinh nghiệm quý báu, từ việc thiết kế gameplay multiplayer, xử lý đồng bộ dữ liệu, cho đến việc tổ chức và phối hợp làm việc nhóm hiệu quả. Những kinh nghiệm này không chỉ giúp nâng cao năng lực chuyên môn mà còn tạo nền tảng vững chắc cho các dự án trong tương lai.
+
+Với định hướng rõ ràng và tinh thần học hỏi không ngừng, nhóm tin rằng Fishy Business có tiềm năng trở thành một trò chơi giải trí thú vị, mang lại những khoảnh khắc vui vẻ và gắn kết cho bạn bè khi cùng nhau trải nghiệm.
+
+\subsection{Công việc đã đóng góp}
+Nhóm thực hiện phân chia công việc, kiểm thử kết quả và hiệu chỉnh cột mốc, kế hoạch làm việc theo các tuần, thường là cách 2 tuần một lần. Bảng dưới đây ghi lại các công việc mà nhóm đã đóng góp theo các giai đoạn:
+\subsubsection{Giai đoạn 1}
+\begin{longtable}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Tuần (Sprint)} & \textbf{Lê Ngọc Hiền} & \textbf{Nguyễn Mạnh Hùng} & \textbf{Huỳnh Trần Học Đăng} \\
+\hline
+
+\textbf{Tuần 1--2} \newline (8/9 -- 21/9)
+&
+    $\bullet$ Thiết kế wireframe (Figma) chi tiết
+    
+    $\bullet$ Thiết kế UI tổng thể
+    
+    $\bullet$ Tạo khu vực chờ (lobby) cơ bản
+&
+    $\bullet$ Tích hợp mô hình Player
+    
+    $\bullet$ Tích hợp mô hình bản đồ
+    
+    $\bullet$ Xây dựng hệ thống camera
+&
+    $\bullet$ Wireframe Figma (chụp màn hình)
+    
+    $\bullet$ Tạo mô hình Thẻ bài (Card model)
+    
+    $\bullet$ Xây dựng logic thắng/thua
+\\
+\hline
+
+\textbf{Tuần 3--4} \newline (22/9 -- 5/10)
+&
+    $\bullet$ Tích hợp UI menu chính
+    
+    $\bullet$ Tích hợp phòng tùy chỉnh (custom room)
+    
+    $\bullet$ Tích hợp UI menu khu vực chờ trong game
+    
+    $\bullet$ Thêm cấu hình trò chơi (GameConfig - cấu hình UI)
+&
+    $\bullet$ Tích hợp mô hình Thẻ bài
+    
+    $\bullet$ Tích hợp mô hình Xu
+    
+    $\bullet$ Xử lý vị trí ngồi
+    
+    $\bullet$ Xử lý vị trí camera
+&
+    $\bullet$ Triển khai chức năng chia bài
+    
+    $\bullet$ Triển khai chức năng chọn bài
+    
+    $\bullet$ Hoàn thiện logic thắng/thua
+\\
+\hline
+
+\textbf{Tuần 5--6} \newline (6/10 -- 19/10)
+&
+    $\bullet$ Tích hợp UI Thông tin Lobby
+    
+    $\bullet$ Xây dựng hệ thống hoạt ảnh UI
+    
+    $\bullet$ Cải thiện Lobby (đá người chơi, đấu nhanh - quick match)
+&
+    $\bullet$ Triển khai chức năng dùng bài
+    
+    $\bullet$ Điều chỉnh camera khi dùng bài
+    
+    $\bullet$ Tích hợp mô hình Thẻ bài và Bàn chơi (Board)
+&
+    $\bullet$ Triển khai chức năng phát bài (deal card)
+    
+    $\bullet$ Triển khai chức năng rút bài (draw card)
+    
+    $\bullet$ Triển khai thẻ chức năng (action card)
+    
+    $\bullet$ Triển khai hệ thống Xu
+    
+    $\bullet$ Triển khai điều kiện thắng
+\\
+\hline
+
+\textbf{Tuần 7--8} \newline (20/10 -- 9/11)
+&
+    $\bullet$ UI thay đổi thông tin người chơi
+    
+    $\bullet$ UI đổi tên Lobby
+    
+    $\bullet$ Thêm biểu tượng người chơi (icon player)
+    
+    $\bullet$ Hoàn thiện UI kết thúc game
+&
+    $\bullet$ Triển khai hoạt ảnh di chuyển đầu người chơi
+    
+    $\bullet$ Thêm hoạt ảnh sắp xếp chỗ ngồi 
+    
+    $\bullet$ Đồng bộ hóa (Sync) dữ liệu bàn chơi
+    
+    $\bullet$ Sửa lỗi chỗ ngồi và hiển thị
+&    
+    $\bullet$ Sửa lỗi dùng thẻ bài
+    
+    $\bullet$ Sửa lỗi đồng bộ hóa thẻ bài
+    
+    $\bullet$ Thêm đồng hồ đếm ngược theo lượt
+\\
+\hline
+
+\textbf{Tuần 9--10} \newline (10/11 -- 30/11)
+&
+    $\bullet$ Xây dựng Hệ thống Âm thanh (Audio system)
+    
+    $\bullet$ Thêm hiệu ứng âm thanh (SFX) và nhạc nền
+    
+    $\bullet$ Thêm UI Cài đặt cho âm thanh
+    
+    $\bullet$ Triển khai Trò chuyện bằng giọng nói (Voice chat - Vivox)
+    
+    $\bullet$ Hỗ trợ chơi khác mạng
+&
+    $\bullet$ Cải thiện ánh sáng trong game scene
+    
+    $\bullet$ Highlight đường đi theo vai trò (role)
+    
+    $\bullet$ Cải thiện di chuyển camera
+&
+    $\bullet$ Thêm Hiệu ứng hình ảnh (VFX) (thắng/thua, xu, bài chức năng)
+    
+    $\bullet$ Sửa lỗi liên quan tới thẻ bài và hiệu ứng
+\\
+\hline
+
+\textbf{Tuần 11--12} \newline (1/12 -- 14/12)
+&
+    $\bullet$ Viết báo cáo tổng hợp
+    
+    $\bullet$ Chuẩn bị slide thuyết trình
+&
+    $\bullet$ Viết báo cáo tổng hợp
+    
+    $\bullet$ Chuẩn bị slide thuyết trình
+&
+    $\bullet$ Viết báo cáo tổng hợp
+    
+    $\bullet$ Chuẩn bị slide thuyết trình
+\\
+\hline
+
+\textbf{Tuần 13--14} \newline (15/12 -- 28/12)
+&
+    $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+    $\bullet$ Sửa lỗi tồn đọng
+&
+    $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+    $\bullet$ Sửa lỗi tồn đọng
+&
+    $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+    $\bullet$ Sửa lỗi tồn đọng
+\\
+\hline
+\caption{Phân công nhiệm vụ giai đoạn 1 theo Sprint}
+\end{longtable}
+
+\subsubsection{Giai đoạn 2}
+\begin{longtable}{|p{2cm}|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Tuần (Sprint)} & \textbf{Lê Ngọc Hiền} & \textbf{Nguyễn Mạnh Hùng} & \textbf{Huỳnh Trần Học Đăng} \\
+\hline
+
+\textbf{Tuần 1--2} \newline (12/1 -- 25/1)
+&
+    $\bullet$ Thiết kế wireframe (Figma) chi tiết
+    
+    $\bullet$ Refactor code và thêm flow cơ bản của game mode mới
+    
+&
+    $\bullet$ Mô tả gameplay mới + cập nhật report
+    
+    $\bullet$ Vẽ class diagram 
+    
+&
+    $\bullet$ Lên kế hoạch cụ thể giai đoạn 2
+    
+    $\bullet$ Vẽ use- case diagram 
+    
+\\
+\hline
+
+\textbf{Tuần 3--4} \newline (26/1 -- 8/2)
+&
+    $\bullet$ Hiện thực UI gameplay mới
+    
+    $\bullet$ Thêm cấu hình trò chơi (GameConfig - cấu hình UI)
+    
+&
+    $\bullet$ Hiện thực gameplay mới: Day Night Phase
+    
+    $\bullet$ Hiện thực các thẻ chức năng: Binoculars, Self-protect, Swap Goal.
+
+&
+    $\bullet$ Hiện thực gameplay mới: Day Night Phase
+    
+    $\bullet$ Xử lý ban nhân vật khi bị vote
+    
+\\
+\hline
+
+\textbf{Tuần 5--6} \newline (22/2 -- 8/3)
+&
+    $\bullet$ Fix lỗi volumn setting.
+    
+    $\bullet$ Thêm tính năng tự tắt mic bản thân.
+    
+    $\bullet$ Thêm tính năng Push-to-talk
+
+    $\bullet$ Thêm hiệu ứng UI: voting, voice chat.
+&
+    $\bullet$ Thêm tính năng mới: Emote
+    
+    $\bullet$ Hoàn thiện voice chat
+    
+&
+    $\bullet$ Cải thiện UI ban đêm 
+    
+    $\bullet$ Thêm tính năng textchat.
+    
+\\
+\hline
+
+\textbf{Tuần 7--8} \newline (9/3 -- 29/3)
+&
+    $\bullet$ Thêm UI tooltip, hướng dẫn điều khiển
+    
+    $\bullet$ Thêm UI thông tin gameplay (mô tả card)
+    
+    $\bullet$ Thêm UI chọn map khi tạo lobby
+
+&
+    $\bullet$ Cải tiến emote người chơi
+    
+    $\bullet$ Thêm 1 map mới
+    
+    $\bullet$ Bổ sung báo cáo
+
+    $\bullet$ Thêm respawn player
+    
+&    
+    $\bullet$ Cập nhật map mới
+    
+    $\bullet$ Thêm hiệu ứng hình ảnh, âm thanh khi sử dụng card chức năng
+    
+    $\bullet$ Fix một số bug gameplay
+
+    $\bullet$ Viết thêm report + vẽ các use-case diagram
+\\
+\hline
+
+\textbf{Tuần 9--10} \newline (30/3 -- 12/4)
+&
+    $\bullet$  Fix lỗi gameplay:
+    
+    $\bullet$ Chơi thử bản build và quay video demo
+    
+    $\bullet$ Thiết lập trang publish game trên itch io
+    
+&
+    $\bullet$  Fix lỗi gameplay
+    
+    $\bullet$ Cải tiến gameplay: các góc cam thay đổi khi ngồi và bắt đầu chơi
+    
+    $\bullet$ Tạo form khảo sát đánh giá game
+&
+    $\bullet$  Thiết lập môi trường làm slide
+    
+    $\bullet$ Hoàn thiện thêm report
+\\
+\hline
+
+% \textbf{Tuần 11--12} \newline (1/12 -- 14/12)
+% &
+%     $\bullet$ Viết báo cáo tổng hợp
+    
+%     $\bullet$ Chuẩn bị slide thuyết trình
+% &
+%     $\bullet$ Viết báo cáo tổng hợp
+    
+%     $\bullet$ Chuẩn bị slide thuyết trình
+% &
+%     $\bullet$ Viết báo cáo tổng hợp
+    
+%     $\bullet$ Chuẩn bị slide thuyết trình
+% \\
+% \hline
+
+% \textbf{Tuần 13--14} \newline (15/12 -- 28/12)
+% &
+%     $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+%     $\bullet$ Sửa lỗi tồn đọng
+% &
+%     $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+%     $\bullet$ Sửa lỗi tồn đọng
+% &
+%     $\bullet$ Nghiên cứu phát triển giai đoạn 2
+
+%     $\bullet$ Sửa lỗi tồn đọng
+% \\
+% \hline
+\caption{Phân công nhiệm vụ giai đoạn 2 theo Sprint}
+\end{longtable}

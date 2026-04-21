@@ -1,0 +1,76 @@
+\subsection{Hệ thống Lobby}
+Trong game multiplayer, hệ thống Lobby đóng vai trò quan trọng, cung cấp cho người chơi những chức năng chính như:
+\begin{enumerate}[+]
+    \item Tạo phòng.
+    \item Tham gia phòng.
+    \item Rời phòng.
+    \item Mời người chơi khác ra khỏi phòng (dành cho host).
+    \item Kết nối các người chơi trong phòng qua hệ thống trung gian của Unity (Relay).
+    \item Đồng bộ thông tin người chơi trong phòng.
+\end{enumerate}
+
+Kiến trúc tổng thể của hệ thống Lobby gồm 3 phần chính:
+\begin{enumerate}[$\bullet$]
+    \item Unity Lobby Service:
+    
+    Là một dịch vụ cung cấp sẵn của Unity, quản lý danh sách người chơi, thông tin phòng và thông tin người chơi. Duy trì kết nối của phòng bằng heartbeat (khi không còn người trong phòng thì phòng sẽ bị hủy).
+    \item Unity Relay Service:
+
+    Là dịch vụ của Unity giúp tạo server trung gian để kết nối các người chơi trong phòng, giúp vượt qua các rào cản về NAT và firewall (NAT Tranversal), tăng tính bảo mật nhờ việc che giấu đi địa chỉ IP của người kết nối trong phòng.
+    \item Lớp quản lý trong game:
+
+    Nhóm thiết kế 2 Component là LobbyManager và RelayManager nhằm phụ trách logic phòng và relay cho game thông qua các dịch vụ đã có sẵn của Unity.
+\end{enumerate}
+    Sau đây, nhóm sẽ trình bày luồng hoạt động của các chức năng chỉnh của hệ thống phòng.
+    
+\subsubsection{Tạo phòng}
+    \begin{enumerate}[-]
+        \item Host nhấn "Create Lobby"
+        \item LobbyService được gọi và tạo một phòng cho host.
+        \item RelayService được gọi và tạo Allocation.
+        \item Thông tin Relay Allocation được cập nhật vào dữ liệu của phòng (Relay Join Code).
+        \item Host gọi NetworkManager và bắt đầu kết nối chế độ host (StartHost()).
+        \item Hệ thống bắt đầu gọi Heartbeat và Polling.
+        \item Người chơi host được chuyển sang scene gameplay.
+    \end{enumerate}
+
+\subsubsection{Tham gia phòng}
+    \begin{enumerate}[-]
+        \item Client nhấn "Join" vào phòng (từ danh sách phòng được lấy từ LobbyService).
+        \item LobbyService trả về phòng tương ứng với phòng Client đã nhấn.
+        \item Client tham gia Relay Allocation (bằng Relay Join Code trong dữ liệu phòng).
+        \item Client gọi NetworkManager và bắt đầu kết nối chế độ client (StartClient()).
+        \item Hệ thống gọi Polling để cập nhật dữ liệu Lobby.
+        \item Người chơi client được chuyển qua scene gameplay nhờ đồng bộ với host bằng NetworkManager.
+    \end{enumerate}
+    
+\subsubsection{Rời phòng}
+    \begin{enumerate}[-]
+        \item Nếu là host thì phòng sẽ bị xóa hoàn toàn, nếu là client thì người chơi bị xóa khỏi phòng (sử dụng LobbyService),
+        \item Dừng tất cả các coroutine về heartbeat và polling.
+        \item Người chơi được chuyển về scene main menu.
+    \end{enumerate}
+    
+\subsubsection{Kick khỏi phòng}
+    \begin{enumerate}[-]
+        \item Host có thể kick người chơi bằng cách xóa người chơi khỏi phòng (sử dụng LobbyService).
+        \item Người chơi bị kick sẽ cập nhật thông tin phòng thông qua polling và thấy mình không còn trong phòng.
+        \item Dừng tất cả các coroutine về heartbeat và polling.
+        \item Người chơi bị kick được chuyển về scene main menu.
+    \end{enumerate}
+    
+\subsubsection{Đồng bộ trạng thái phòng (Polling)}
+    Vì hệ thống phòng không phải là realtime nên người chơi phải liên tục lấy dữ liệu mới (mỗi 5 giây).
+    \begin{enumerate}[-]
+        \item Gọi LobbyService để lấy thông tin phòng bằng mã phòng đã lưu lại từ trước.
+        \item Kiểm tra thay đổi dữ liệu của phòng: 
+        \begin{enumerate}[+]
+            \item Phòng còn không?
+            \item Người chơi có bị kick không?
+            \item Có người chơi khác vào hay thoát không?
+        \end{enumerate}
+        \item Gửi các event tương ứng (OnUpdatedCurrentLobby, OnPlayerJoinedLobby, OnPlayerLeftLobby).
+    \end{enumerate}
+    
+\subsubsection{Duy trì phòng bằng Heartbeat}
+    Vì hệ thống Unity Lobby sẽ tự động xóa phòng nếu không có heartbeat trong 30 giây, do đó người chơi host sẽ thực hiện coroutine heartbeat mỗi 15 giây dùng LobbyService gửi heartbeat cho phòng.

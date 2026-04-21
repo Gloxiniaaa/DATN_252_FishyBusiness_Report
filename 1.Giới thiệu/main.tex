@@ -1,0 +1,81 @@
+\section{Giới thiệu}
+Mỗi trò chơi đều có bối cảnh ra đời, mục tiêu phát triển và phạm vi triển khai. Ngoài ra, không thể thiếu những điểm khác biệt so với các sản phẩm hiện có trên
+thị trường. Trong phần này, nhóm sẽ làm rõ những điều trên.
+\subsection{Bối cảnh và vấn đề đặt ra}
+    Thị trường game hiện nay đang chứng kiến sự trỗi dậy mạnh mẽ của dòng game \textit{Social Deduction} (Suy luận xã hội) và \textit{Party Game}. Những cái tên như \textit{Among Us}, \textit{Goose Goose Duck} hay \textit{Party Animals} đã chứng minh một chân lý: người chơi hiện đại không chỉ tìm kiếm thử thách về kỹ năng, họ khao khát sự kết nối. Họ muốn một không gian ảo nơi họ có thể tương tác, lừa lọc, cười đùa và "tương tàn" với bạn bè mình.\\
+    
+    Bên cạnh đó, với công nghệ ngày càng phát triển ngày nay, các trò chơi điện tử từ đó cũng ngày càng được phổ biến với mọi người trên thế giới. Trong đó yếu tố 3D trong các trò chơi điện tử đã trở nên không quá xa lạ trên thế giới và ngày càng trở nên được yêu thích. Yếu tố 3D mang đến cho người chơi một gốc nhìn mới mẻ, rộng rãi và chân thực hơn, khả năng đem đến trải nghiệm tốt cho người chơi được cao hơn. Đồ họa 3D xuất hiện trong các trò chơi đã trở nên kích thích với không chỉ giới trẻ mà gần như với lứa tuổi trên thế giới.\\
+    
+    Tuy nhiên, khi nhìn vào các bản chuyển thể Board Game (trò chơi bàn cờ) lên nền tảng số hiện nay, nhóm nhận thấy một "lỗ hổng" rất lớn. Hầu hết các game Saboteur (Kẻ phá hoại) trên thị trường đều chỉ tập trung vào cơ chế bài bạc (2D) trên một mặt phẳng tĩnh. Điều này vô tình giết chết không khí của một buổi tụ tập. Cảm giác căng thẳng khi nhìn vào mắt đối phương, hay sự vui vẻ khi cùng nhau làm trò hề trong lúc chờ đến lượt đi... hoàn toàn biến mất.  \\
+    
+    Từ đó, nhóm đã chọn đề tài phát triển một trò chơi dạng Party Game kết hợp với board game và các hoạt động ngoài lề khác như thay đồ, đánh đàn, ... . Trò chơi kết hợp giữa board game, multiplayer và sự sáng tạo trong công nghệ trò chơi. Việc đưa các hoạt động ngoài lề vào trò chơi sẽ làm tăng thêm sự tương tác của các người chơi với nhau. Điều này có thể tạo nên sự mới lạ, thu hút người chơi khám phá các tính năng trong trò chơi, nhưng cũng cần bảo đảm giữ được các yếu tố cơ bản và tinh thần chiến thuật truyền thống của trò chơi chính là \textit{Saboteur} để giúp người chơi không bị quá xa lạ với trò chơi.
+
+\input{1.Giới thiệu/SaboteurRule}
+\input{1.Giới thiệu/NewSaboteurRule}
+
+
+\subsection{Mục tiêu của đề tài}
+    Từ những phân tích về thực trạng và nhu cầu thị trường nêu trên, nhóm thực hiện đề tài xác định các mục tiêu cốt lõi cần đạt được như sau:\\
+
+    \textbf{Thứ nhất, số hóa và tự động hóa trọn vẹn luật chơi Saboteur:}
+    Mục tiêu đầu tiên là xây dựng một hệ thống logic game hoàn chỉnh, đảm bảo tuân thủ chính xác luật chơi gốc của board game Saboteur. Hệ thống phải tự động xử lý các thao tác phức tạp như chia bài, kiểm tra vai trò (Role), thuật toán loang để xác định đường đi liên thông từ điểm xuất phát đến kho báu, và tính toán thắng thua. Điều này nhằm loại bỏ sự rườm rà trong việc thiết lập bàn chơi (setup) thủ công, giúp người chơi tập trung hoàn toàn vào chiến thuật.\\
+    
+    \textbf{Thứ hai, xây dựng thêm phiên bản Saboteur mở rộng kết hợp cơ chế Ma Sói (Werewolf):} Mục tiêu của đề tài là phát triển thêm một phiên bản Saboteur hoàn toàn mới bằng cách tích hợp các yếu tố đặc trưng của Ma Sói nhằm tăng tính chiến thuật và tương tác giữa người chơi. Cụ thể, trò chơi được thiết kế với hai giai đoạn ngày và đêm, cho phép người chơi thảo luận, suy luận và bỏ phiếu trong pha ngày để xác định người bị nghi ngờ; người có số phiếu cao nhất sẽ bị cấm lượt đi trong đêm tiếp theo. Sự kết hợp giữa cơ chế xây dựng đường đi của Saboteur và yếu tố ẩn vai trò, đấu trí của Ma Sói giúp tạo ra trải nghiệm chơi mới mẻ, kịch tính và giàu tính chiến thuật hơn so với các phiên bản hiện có.\\
+    
+    \textbf{Thứ ba, xây dựng môi trường tương tác xã hội 3D:}
+    Khác với các ứng dụng chơi bài 2D truyền thống, mục tiêu của nhóm là tạo ra một không gian 3D sống động – nơi người chơi không chỉ là những cái tên trên bảng điểm. Người chơi sẽ được hóa thân vào các nhân vật (Avatar), có khả năng di chuyển tự do trong không gian sảnh chờ (Lobby) và bàn chơi. Mục tiêu là tái hiện cảm giác "tụ tập" thực tế, nơi các tương tác vật lý và phi ngôn ngữ được đề cao.\\
+    
+    \textbf{Thứ tư, phát triển các tính năng giải trí bổ trợ:}
+    Để giải quyết bài toán "thời gian chết" (downtime) khi chờ đợi người khác đánh bài hoặc chờ đủ người tạo phòng, nhóm đặt mục tiêu tích hợp các mini-features mang tính giải trí cao. Cụ thể là hệ thống nhạc cụ ảo (cho phép người chơi tương tác phím để tạo âm thanh) và hệ thống thời trang (thay đổi ngoại hình nhân vật). Đây là yếu tố then chốt để giữ chân người chơi và tạo nên sự vui nhộn đặc trưng của dòng Party Game.\\
+    
+    \textbf{Thứ năm, hoàn thiện kỹ thuật Multiplayer thời gian thực:}
+    Ứng dụng kiến thức về lập trình mạng để xây dựng hệ thống Client-Host ổn định. Đảm bảo sự đồng bộ mượt mà về vị trí nhân vật, trạng thái bàn chơi và các tương tác thời gian thực giữa nhiều người chơi khác nhau, giảm thiểu độ trễ (latency) để trải nghiệm không bị gián đoạn.
+    
+\subsection{Phạm vi thực hiện}
+
+    Về nền tảng, trò chơi hướng đến việc chơi trò chơi trên nền tảng Window từ phiên bản Window 7 trở lên.
+    
+    Về đối tượng hướng đến của trò chơi, trò chơi hướng đến tất cả mọi người ở mọi lứa tuổi cần sự giải trí, sự mới mẻ, sự cạnh tranh và tư duy giải đố.
+
+
+\subsection{Ý nghĩa và tính ứng dụng của đề tài}
+
+    \textbf{Ý nghĩa khoa học và thực tiễn:}
+    Việc thực hiện đề tài "Fishy Business" không chỉ là việc tạo ra một sản phẩm giải trí đơn thuần, mà còn là cơ hội để nhóm áp dụng tổng hợp các kiến thức nền tảng của ngành Khoa học máy tính.
+    \begin{itemize}
+        \item \textit{Thử thách về Lập trình mạng:} Đồng bộ hóa trạng thái trong môi trường 3D là một bài toán khó, đòi hỏi sự hiểu biết sâu sắc về cấu trúc gói tin, băng thông và xử lý độ trễ.
+        \item \textit{Tư duy Thiết kế hệ thống (System Design):} Việc kết hợp giữa logic chặt chẽ của một game bài (Turn-based) với sự tự do của một game nhập vai (Real-time 3D) đòi hỏi một kiến trúc phần mềm linh hoạt, dễ bảo trì và mở rộng (Design Patterns).
+    \end{itemize}
+    
+    \textbf{Tính ứng dụng:}
+    \begin{itemize}
+        \item \textit{Giải trí và Kết nối:} Trong bối cảnh làm việc và học tập từ xa ngày càng phổ biến, sản phẩm đóng vai trò là cầu nối giúp bạn bè, đồng nghiệp có không gian để "gặp gỡ" và giải trí cùng nhau mà không bị giới hạn bởi khoảng cách địa lý.
+        \item \textit{Tiềm năng mở rộng:} Dự án được xây dựng với kiến trúc hướng đối tượng (OOP), do đó có thể dễ dàng mở rộng để tích hợp thêm nhiều board game khác nhau (như Ma Sói, Mèo Nổ) vào cùng một game trong tương lai, hướng tới mô hình "Metaverse" thu nhỏ cho board game.
+    \end{itemize}
+
+\subsection{So sánh một số game tương tự trên thị trường}
+Để định vị sản phẩm rõ ràng hơn, nhóm tiến hành so sánh \textit{Fishy Business} với các sản phẩm cạnh tranh trên nền tảng PC và Web.
+
+\subsubsection{Tabletop Simulator (PC - Steam)}
+Đây là "tượng đài" của dòng game mô phỏng board game trên PC.
+\begin{itemize}
+    \item \textbf{Điểm mạnh:} Mô phỏng vật lý cực kỳ chân thực, kho game khổng lồ từ Workshop.
+    \item \textbf{Điểm yếu cần khắc phục:} Tabletop Simulator là một môi trường "Sandbox" thuần túy. Nó không có luật chơi tự động (người chơi phải tự tính điểm, tự xào bài bằng tay ảo). Hơn nữa, nó khá nặng nề và phức tạp cho những người chơi casual (phổ thông). Người chơi không có nhân vật để đi lại tương tác với môi trường, dẫn đến thiếu cảm giác kết nối xã hội.
+\end{itemize}
+
+\subsubsection{Board Game Arena (Web-based)}
+Nền tảng chơi board game trên trình duyệt web rất phổ biến.
+\begin{itemize}
+    \item \textbf{Điểm mạnh:} Nhanh, tiện, chạy trên mọi trình duyệt, luật chơi tự động hóa tốt.
+    \item \textbf{Điểm yếu cần khắc phục:} Đồ họa 2D hoàn toàn tĩnh. Trải nghiệm chơi giống như đang làm việc với một file Excel có hình ảnh hơn là chơi game. Không có âm nhạc, không có không khí, không có tương tác giữa các người chơi ngoài khung chat text bé tí.
+\end{itemize}
+
+\subsubsection{Sự khác biệt của Fishy Business}
+\textit{Fishy Business} chọn một lối đi riêng trên PC:
+\begin{itemize}
+    \item \textbf{Trải nghiệm 3D Native:} Không phải là web game, đây là một ứng dụng Windows Standalone tận dụng sức mạnh đồ họa để tạo ra không gian đẹp mắt.
+    \item \textbf{Kết hợp hoàn hảo:} Nhóm lấy sự tiện lợi (luật chơi tự động) của \textit{Board Game Arena} kết hợp với sự tự do, vui nhộn (di chuyển, nghịch ngợm) của các game như \textit{Overcooked} hay \textit{Party Animals}.
+    \item \textbf{Tính năng độc nhất:} \textit{Fishy Business} kết hợp cơ chế xây dựng đường đi của Saboteur với yếu tố ẩn vai trò và suy luận theo phong cách Ma Sói trong hai pha ngày – đêm, kèm hệ thống thảo luận và bỏ phiếu. Đặc biệt, cơ chế “cấm lượt đi” tạo ra biến động chiến thuật liên tục, mang lại trải nghiệm mới lạ và kịch tính hơn so với Saboteur truyền thống.
+\end{itemize}
+
+\newpage

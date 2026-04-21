@@ -1,0 +1,123 @@
+\section{Yêu cầu của đề tài}
+Dựa trên mục tiêu xây dựng một tựa game Multiplayer kết hợp giữa tư duy chiến thuật và tương tác xã hội trên nền tảng PC, nhóm xác định các yêu cầu cụ thể đối với hệ thống như sau. Việc phân định rõ ràng các nhóm yêu cầu này là kim chỉ nam cho quá trình thiết kế và lập trình ở các giai đoạn sau.
+\subsection{Yêu cầu chức năng}
+Đây là những tính năng cốt lõi mà hệ thống bắt buộc phải thực hiện được để đáp ứng nhu cầu của người chơi. Nhóm chia thành hai phân hệ chính: Gameplay và Social.
+
+\subsubsection{Nhóm chức năng Gameplay (Core Loop - Saboteur)}
+Hệ thống phải đảm bảo vận hành chính xác logic của board game Saboteur gốc:
+\begin{itemize}
+    \item \textbf{Quản lý phiên chơi:}
+        \begin{itemize}
+            \item Cho phép người chơi Tạo phòng (Host Game) và Tham gia phòng (Join Game/Quick Join) thông qua danh sách phòng.
+            \item Hỗ trợ tối thiểu 3 người và tối đa 8 người trong một phiên chơi.
+        \end{itemize}
+    \item \textbf{Cơ chế chia bài và Phân vai:}
+        \begin{itemize}
+            \item Hệ thống tự động xáo bài và chia bài ngẫu nhiên cho người chơi theo số lượng quy định.
+            \item Phân vai ngẫu nhiên (Thợ mỏ - \textit{Chó} hoặc Kẻ phá hoại - \textit{Mèo}) và đảm bảo bí mật vai trò của từng người chơi (chỉ người chơi đó mới thấy vai trò của mình).
+        \end{itemize}
+    \item \textbf{Cơ chế Đánh bài:}
+        \begin{itemize}
+            \item \textit{Thẻ đường hầm (Path Cards):} Người chơi có thể đặt thẻ lên bàn chơi. Hệ thống phải kiểm tra tính hợp lệ (logic khớp nối đường đi) trước khi cho phép đặt.
+            \item \textit{Thẻ chức năng (Action Cards):} Hỗ trợ các thẻ phá hủy đường hầm, xem bản đồ kho báu, hoặc khóa/mở khóa hành động của người chơi khác.
+        \end{itemize}
+    \item \textbf{Cơ chế Chiến thắng:}
+        \begin{itemize}
+            \item Tự động phát hiện khi đường hầm nối liền từ điểm xuất phát đến kho báu (Phe chó thắng).
+            \item Tự động kết thúc ván khi hết bài mà chưa tìm thấy kho báu (Phe mèo thắng).
+        \end{itemize}
+    \item \textbf{Chức năng của bản mở rộng:}
+        \begin{itemize}
+            \item Cơ chế day-night gồm các phiên như: day, night, discussion, voting.
+            \item Chức năng của 3 lá bài mở rộng.
+            \item Chức năng vote player, skip trong voting.
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Nhóm chức năng Xã hội và Tương tác (Social \& Interactive)}
+Tận dụng lợi thế 3D và nền tảng PC để tăng cường trải nghiệm:
+\begin{itemize}
+    \item \textbf{Điều khiển nhân vật:} Người chơi điều khiển nhân vật 3D di chuyển tự do trong sảnh chờ bằng cụm phím WASD và điều hướng camera bằng Chuột. Phím \textbf{E} để mở menu emotes, nhấn giữ \textbf{F} để tương tác với các vật thể, \textbf{Enter} để mở hộp thoại chat, nhấn giữ \textbf{V} để voice chat.
+    \item \textbf{Hệ thống Nhạc cụ:}
+        \begin{itemize}
+            \item Cung cấp các nhạc cụ ảo ( Piano, ...) trong môi trường game.
+            \item Cho phép người chơi kích hoạt nhạc cụ và sử dụng bàn phím máy tính để chơi các nốt nhạc (Note mapping). Âm thanh phát ra phải được đồng bộ đến tai của tất cả người chơi khác trong phòng.
+        \end{itemize}
+    \item \textbf{Hệ thống Thời trang:}
+        \begin{itemize}
+            \item Người chơi có thể truy cập kho đồ để thay đổi trang phục (Skin, Mũ, Phụ kiện) cho nhân vật.
+            \item Sự thay đổi ngoại hình phải được cập nhật ngay lập tức cho các người chơi khác cùng thấy.
+        \end{itemize}
+    \item \textbf{Giao tiếp:} Hỗ trợ kênh Chat văn bản (Global Chat), hệ thống biểu cảm (Emotes/Animations) như vẫy tay, nhảy múa và voice chat.
+\end{itemize}
+\subsection{Yêu cầu phi chức năng}
+Yêu cầu về chất lượng và hiệu suất hoạt động của hệ thống:
+
+\begin{itemize}
+    \item \textbf{Hiệu năng:}
+        \begin{itemize}
+            \item Game phải duy trì tốc độ khung hình ổn định (tối thiểu 60 FPS) trên các cấu hình máy tính tầm trung (có card đồ họa rời phổ thông hoặc onboard đời mới).
+            \item Thời gian tải màn chơi không quá 10 giây.
+        \end{itemize}
+    \item \textbf{Độ trễ mạng:}
+        \begin{itemize}
+            \item Các thao tác quan trọng như đánh bài, di chuyển nhân vật phải được đồng bộ với độ trễ thấp (dưới 100ms trong điều kiện mạng ổn định) để tránh hiện tượng "teleport" hoặc lệch pha.
+            \item Đặc biệt, tính năng đánh đàn yêu cầu độ trễ cực thấp để đảm bảo nhịp điệu bài hát không bị vỡ khi nhiều người cùng chơi (Jamming).
+        \end{itemize}
+    \item \textbf{Tính tin cậy:}
+        \begin{itemize}
+            \item Hệ thống phải xử lý được các ngoại lệ: người chơi (trừ host) đột ngột mất kết nối không được làm sập phòng chơi của những người còn lại.
+        \end{itemize}
+    \item \textbf{Khả năng mở rộng:} Kiến trúc code phải được tổ chức theo hướng Modular (mô-đun hóa) để dễ dàng thêm các loại bài mới, role mới hoặc nhạc cụ mới trong tương lai mà không phá vỡ logic cũ.
+\end{itemize}
+
+\subsection{Yêu cầu kỹ thuật}
+Các ràng buộc về công nghệ và môi trường phát triển:
+
+\begin{itemize}
+    \item \textbf{Nền tảng vận hành:}
+        \begin{itemize}
+            \item Hệ điều hành: Windows 10 (64-bit) hoặc Windows 11.
+            \item Thiết bị ngoại vi: Bắt buộc sử dụng Chuột và Bàn phím.
+        \end{itemize}
+    \item \textbf{Công cụ phát triển:}
+        \begin{itemize}
+            \item \textit{Game Engine:} Ổn định, hỗ trợ lập trình 3D, multiplayer và hỗ trợ build PC mạnh mẽ.
+            \item \textit{Tools:} Visual Studio Code
+        \end{itemize}
+    \item \textbf{Giải pháp mạng:}
+        \begin{itemize}
+            \item Sử dụng kiến trúc Client-Server hoặc Host-Client.
+            \item Thư viện mạng: Netcode for GameObjects (NGO) hoặc Photon Fusion (tùy chọn dựa trên độ phức tạp).
+        \end{itemize}
+    \item \textbf{Tài nguyên đồ họa (Assets):}
+        \begin{itemize}
+            \item Phong cách nghệ thuật: Low-poly và Cel-shading để phù hợp với không khí vui nhộn và tối ưu hiệu năng.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Yêu cầu trải nghiệm người dùng}
+
+Đối với một game Party, cảm xúc của người chơi là yếu tố sống còn. Nhóm đặt ra các tiêu chuẩn UX sau:
+
+\begin{itemize}
+    \item \textbf{Tính trực qua:}
+        \begin{itemize}
+            \item Giao diện người dùng (UI) phải rõ ràng. Các lá bài trên tay phải dễ nhìn, dễ đọc thông tin.
+            \item Thao tác kéo thả bài hoặc click chọn bài phải mượt mà, có phản hồi bằng âm thanh hoặc hiệu ứng hình ảnh khi tương tác thành công.
+        \end{itemize}
+    \item \textbf{Bầu không khí:}
+        \begin{itemize}
+            \item Môi trường 3D phải tạo cảm giác ấm cúng, vui vẻ.
+            \item Âm nhạc nền nhẹ nhàng, không lấn át tiếng trò chuyện hoặc tiếng nhạc cụ do người chơi tạo ra.
+        \end{itemize}
+    \item \textbf{Tính phản hồi:}
+        \begin{itemize}
+            \item Các thông báo quan trọng (tới lượt chơi, tìm thấy vàng, bị phá bài) phải hiển thị nổi bật giữa màn hình.
+            \item UI phản hồi nhanh chóng khi nhận tương tác.
+            \item Khi người chơi bấm phím đánh đàn, âm thanh phải phát ra ngay lập tức để tạo cảm giác thỏa mãn.
+        \end{itemize}
+    \item \textbf{Khả năng tiếp cận:} Game cung cấp hướng dẫn cơ bản hoặc Tooltip, giúp người chưa từng chơi Saboteur cũng có thể nắm bắt nhanh chóng.
+\end{itemize}
+
+\newpage

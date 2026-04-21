@@ -1,0 +1,73 @@
+\newpage
+\section{Kế hoạch thực hiện giai đoạn tiếp theo}
+\subsection{Kế hoạch theo mốc thời gian}
+
+Giai đoạn tiếp theo được triển khai trong vòng 14 tuần, với mục tiêu mở rộng tính năng,
+cải thiện trải nghiệm người dùng và nâng cấp kiến trúc hệ thống theo hướng ổn định và
+dễ mở rộng hơn. Mỗi tuần được phân rã thành một nhóm nhiệm vụ cụ thể, ưu tiên theo
+mức độ quan trọng và sự phụ thuộc lẫn nhau giữa các tính năng. Kế hoạch chi tiết
+theo từng mốc thời gian được mô tả trong bảng dưới đây.
+
+% \subsection{Kế hoạch theo mốc thời gian}
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{11cm}|}
+\hline
+\textbf{Tuần} & \textbf{Nội dung công việc chi tiết} \\ \hline
+
+
+1 & Xây dựng Text Chat: giao diện chat, danh sách người gửi, chống spam, đảm bảo đồng bộ tin nhắn theo thời gian thực. Cơ chế tính điểm cuối trận và hệ thống emoji. \\ \hline
+
+2 & Phát triển hệ thống biểu cảm người chơi (Player's Emotion): tạo thư viện biểu cảm, hoạt ảnh đơn giản, nút chọn nhanh trong giao diện. \\ \hline
+
+3 & Cải thiện tương tác với gameplay: thao tác kéo–thả hợp lý hơn, bổ sung hiệu ứng phản hồi trực quan. \\ \hline
+
+4 & Thêm các map game mới cho người chơi đa dạng lựa chọn. Tích hợp lựa chọn map lên UI trước khi vào game\\ \hline
+
+5 & Tích hợp SFX và VFX: âm thanh thao tác, hiệu ứng mở bài, hiệu ứng hành động, tối ưu hiệu suất tránh gây lag khi kích hoạt liên tục. \\ \hline
+
+6 & Chuyển nền tảng sang mô hình Client–Server (nếu tìm được dịch vụ phù hợp): phân tách logic máy chủ, xử lý đồng bộ trạng thái, kiểm thử tải ở quy mô nhỏ. \\ \hline
+
+7-8 & Thêm board game mới “Liar Bar!”: xây dựng luật chơi cơ bản, UI tối thiểu, chạy thử gameplay loop và kiểm tra lỗi phát sinh. \\ \hline
+
+9 & Tối ưu hiệu suất mạng: giảm độ trễ, cải thiện truyền tải sự kiện, xử lý packet loss, kiểm thử với nhiều người chơi đồng thời. \\ \hline
+
+10 & Nâng cấp và hoàn thiện UI: thiết kế lại các panel chính, thống nhất style, thêm hiệu ứng chuyển cảnh và icon trực quan hơn. \\ \hline
+
+11 & Chuẩn bị bản build phát hành: kiểm thử tính năng, rà soát bug cuối cùng, tối ưu kích thước bản cài. \\ \hline
+
+12 & Deploy và phát hành chính thức lên itch.io: tạo trang mô tả, screenshot, trailer ngắn, thiết lập bản public và kênh cập nhật. \\ \hline
+
+13 & Thu thập phản hồi từ người chơi: khảo sát, ghi nhận lỗi, đánh giá trải nghiệm, phân loại mức độ ưu tiên của vấn đề. \\ \hline
+
+14 & Tổng hợp toàn bộ kết quả, báo cáo tiến độ, đề xuất các cải tiến cho stage tiếp theo và điều chỉnh hướng phát triển lâu dài. \\ \hline
+
+\end{tabular}
+\caption{Bảng kế hoạch thực hiện dự án giai đoạn 2}
+\end{table}
+
+
+% \subsection{Kế hoạch phân công nhân sự}
+
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{|c|p{10cm}|}
+% \hline
+% \textbf{Thành viên} & \textbf{Nhiệm vụ} \\ \hline
+% Người 1 & Phát triển hệ thống mạng, Client–Server, hiệu suất, tích hợp board game mới. \\ \hline
+% Người 2 & UI/UX, VFX/SFX, Player Interaction, hệ thống Emotion. \\ \hline
+% Người 3 & Map Custom, Text Chat, lobby, publish itch.io, thu thập phản hồi người dùng. \\ \hline
+% \end{tabular}
+% \end{table}
+
+\subsection{Mục tiêu và kết quả mong đợi}
+
+\begin{itemize}
+    \item Hoàn thiện đầy đủ các tính năng cốt lõi của Stage 2: giao tiếp, tương tác, bản đồ tùy chỉnh và UI/UX.
+    \item Tối ưu hệ thống mạng để hỗ trợ nhiều người chơi ổn định.
+    \item Ra mắt phiên bản công khai trên itch.io để thu hút người dùng đầu tiên.
+    \item Thu thập dữ liệu phản hồi từ người chơi nhằm cải thiện chất lượng sản phẩm và định hướng tương lai.
+\end{itemize}
+
+
+\newpage

@@ -1,0 +1,35 @@
+\subsection{Giải pháp voice chat Vivox}
+Trong các game multiplayer, đặc biệt là dạng board game như nhóm đang triển khai, hệ thống voice chat đóng vai trò rất quan trọng trong việc giúp tăng độ tương tác giữa các người chơi.
+
+Hiện tại trên thị trường có một số giải pháp voice chat có thể tich hợp vào Unity như Vivox, Photon Voice 2, Dissonance Voice và Steam Voice Chat. Sau đây nhóm sẽ đưa ra lý do giải pháp Vivox được chọn để triển khai bằng cách đánh giá tổng quan các giải pháp trên.
+\begin{enumerate}[$\bullet$]
+    \item \textbf{Vivox:}
+    \begin{enumerate}[-]
+        \item Miễn phí lên đến tối đa 5000 người dùng hoạt động cùng lúc (5000 PCU)
+        \item Được tích hợp trực tiếp trong Unity Service.
+        \item API gọn, hỗ trợ channel-based, tùy chỉnh âm lượng theo người chơi.
+        \item Chất lượng âm tốt, phù hợp, ổn định với game giải trí.
+        \item Hỗ trợ tích hợp thêm text chat nhanh chóng.
+    \end{enumerate}
+    \item \textbf{Photon Voice 2:}
+    \begin{enumerate}[-]
+        \item Miễn phí tới 20 CCU (kèm theo của dịch vụ Photon Cloud).
+        \item Phù hợp với game dạng realtime (FPS, action).
+        \item Overkill với dạng game turn-based, ít hành động.
+    \end{enumerate}
+    \item \textbf{Dissonance Voice Chat:}
+    \begin{enumerate}[-]
+        \item Giá công cụ 50 USD (Unity Asset Store).
+        \item Chạy local server, tính tùy biến cao.
+        \item Phải tự thiết lập backend hoặc tích hợp thủ công với NGO.
+        \item Tốt cho dạng game LAN.
+    \end{enumerate}
+    \item \textbf{Steam Voice Chat:}
+    \begin{enumerate}[-]
+        \item Miễn phí và ổn định.
+        \item Chỉ dùng được cho game phát hành trên Steam.
+        \item Không hỗ trợ chia channel dễ dàng như Vivox.
+    \end{enumerate}
+\end{enumerate}
+
+Từ các đặc điểm trên, Vivox là giải pháp tốt nhất không chỉ về chi phí, tính năng mà còn về phù hợp nhất với thể loại game và phù hợp cả với hệ thông NGO mà nhóm đã chọn trước đó. Do đó, nhóm chọn sử dụng Vivox để phát triển hệ thống voice chat và text chat trong game.

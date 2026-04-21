@@ -1,0 +1,38 @@
+\subsection{Thiết kế Gameplay}
+
+Bản đồ Cabin là không gian sinh hoạt chung nơi người chơi
+có thể di chuyển tự do, tương tác với các đồ vật trong nhà và tham gia vào nhiều trò board game khác nhau. Cabin hoạt động như một sảnh chờ mở rộng kết hợp gameplay tương tác, giúp người chơi giao lưu, thao tác vui nhộn và trải nghiệm các trò chơi dạng board game.
+
+\begin{itemize}
+
+    \item \textbf{Mục tiêu tổng quan:}  
+    Người chơi khám phá cabin. Tương tác với các vật thể như nhạc cụ, Tủ đồ, máy phát nhạc, bàn ghế,.. Ngồi vào bàn chơi và tham gia vào các mini board game. Mỗi trò chơi có luật riêng. Hiện tại nhóm chỉ tập trung vào 1 board game là \textit{Fishy Business} lấy cảm hứng từ Saboteur. Cabin đóng vai trò môi trường trung gian nơi người chơi tự do khám phá, giao lưu, tương tác.
+
+    \item \textbf{Cơ chế di chuyển và tương tác:}  
+    \begin{itemize}
+        \item Người chơi điều khiển nhân vật dạng third-person controller. Có thể nhảy và đi trên cầu thang.
+        \item Cabin chứa nhiều vật thể có thể tương tác: ghế, sofa, tủ, đồ trang trí, cửa đẩy.
+        \item Tiếp cận tủ đồ cho phép người chơi thay đổi trang phục, tăng tính cá nhân hóa.
+        \item Tiếp cận nhạc cụ cho phép người chơi chơi nhạc bằng bàn phím, tăng tính giải trí, giết thời gian chết.
+        \item Khi tiếp cận một bàn board game, người chơi nhấn tương tác để ngồi vào 
+    \end{itemize}
+
+    \item \textbf{Hệ thống bàn board game:}  
+    Dựa trên luật chơi Saboteur đã nghiên cứu:
+    \begin{itemize}
+        \item Sau khi đủ số lượng người chơi ngồi vào bàn, một người bất kỳ nhấn "Start" và bắt đầu game.
+        \item Tay bài hiện ở dưới màn hình, chọn bài và đặt bài bằng chuột.
+        \item Có thể quan sát bàn và các người chơi khác. Có cơ chế điểu khiền đầu bằng chuột giúp người chơi thể hiện gật đầu hay lắc đầu.
+        \item Kết thúc trò chơi, hiển thị UI thắng/thua.
+    \end{itemize}
+
+    \item \textbf{Giao tiếp trong cabin:}  
+    \begin{itemize}
+        \item Voice chat
+        \item Chat trong Cabin (global chat).
+        \item Biểu cảm nhân vật (emote).
+    \end{itemize}
+
+    \item \textbf{Điều kiện hoàn thành:}  
+    Cabin không có điều kiện thắng thua chung. Người chơi tự do chọn mini-game yêu thích và hoàn thành các ván chơi nhỏ, sau đó quay lại cabin để chọn bàn khác.
+\end{itemize}

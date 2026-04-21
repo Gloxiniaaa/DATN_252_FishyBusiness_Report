@@ -1,0 +1,11 @@
+
+\subsection{Tổng quan về game 3D Multiplayer}
+    Trò chơi nhiều người chơi (Multiplayer Game) là một hệ thống thời gian thực phức tạp, nơi nhiều người chơi tương tác với nhau trong cùng một môi trường ảo.\\
+    
+    \textbf{Đặc điểm cốt lõi:}
+    Khác với game Single-player (nơi mọi logic diễn ra cục bộ trên một máy), game Multiplayer đối mặt với thách thức lớn nhất là sự \textbf{đồng bộ hóa trạng thái}. Mọi hành động của người chơi A (di chuyển, đánh bài, đánh đàn) phải được truyền tải chính xác và gần như tức thời đến người chơi B, C, D,...
+    \begin{itemize}
+        \item \textit{Không gian 3D:} Việc đồng bộ trong không gian 3D phức tạp hơn 2D do phải xử lý dữ liệu biến đổi liên tục của vector vị trí (Position), góc xoay (Rotation) và các trạng thái vật lý (Physics) trên cả 3 trục (x, y, z).
+        \item \textit{Vấn đề độ trễ:} Đây là yếu tố sống còn. Trên môi trường Internet, gói tin luôn có độ trễ. Các kỹ thuật như \textit{Client-side Prediction} (Dự đoán phía máy khách) và \textit{Lag Compensation} (Bù trễ) là những chủ đề nghiên cứu bắt buộc để đảm bảo trải nghiệm mượt mà.
+    \end{itemize}
+    
