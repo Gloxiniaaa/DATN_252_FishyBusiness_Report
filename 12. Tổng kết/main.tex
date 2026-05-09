@@ -338,3 +338,41 @@ Nhóm thực hiện phân chia công việc, kiểm thử kết quả và hiệu
 % \hline
 \caption{Phân công nhiệm vụ giai đoạn 2 theo Sprint}
 \end{longtable}
+
+
+\subsection{Hạn chế}
+
+Mặc dù đề tài đã xây dựng được một hệ thống trò chơi với đầy đủ các chức năng cơ bản như tạo phòng, tham gia phòng, đồng bộ trạng thái người chơi và xử lý gameplay theo thời gian thực, tuy nhiên trong quá trình thực hiện vẫn còn tồn tại một số hạn chế nhất định cần được cải thiện trong tương lai.
+
+\begin{itemize}
+    \item Số lượng bản đồ (map) và nội dung trong trò chơi hiện vẫn còn tương đối hạn chế. Các map chủ yếu tập trung vào việc phục vụ kiểm thử gameplay và cơ chế mạng, chưa có nhiều sự đa dạng về thiết kế, chủ đề và độ khó để tạo cảm giác mới mẻ cho người chơi khi trải nghiệm trong thời gian dài.
+
+    \item Hệ thống truyền dữ liệu thời gian thực (real-time networking) vẫn chưa được tối ưu hoàn toàn. Trong một số trường hợp khi tốc độ mạng không ổn định hoặc có độ trễ cao, trò chơi vẫn có thể xuất hiện hiện tượng giật, chậm đồng bộ hoặc phản hồi chưa thật sự mượt mà giữa các người chơi.
+
+    \item Dự án hiện tại vẫn đang sử dụng mô hình Client-Host thay vì mô hình Client-Server chuyên biệt. Vì vậy, toàn bộ quá trình xử lý và truyền dữ liệu trong một phòng chơi phụ thuộc khá nhiều vào thiết bị của người làm Host. Nếu Host có kết nối mạng yếu hoặc cấu hình không đủ mạnh thì trải nghiệm của các người chơi khác trong cùng lobby cũng sẽ bị ảnh hưởng đáng kể.
+
+    \item Việc kiểm thử hệ thống với số lượng lớn người chơi thực tế vẫn còn hạn chế. Đề tài chủ yếu mới được thử nghiệm trong phạm vi nhỏ nên chưa thể đánh giá đầy đủ khả năng chịu tải, khả năng mở rộng cũng như độ ổn định của hệ thống khi hoạt động trong môi trường thực tế với nhiều người dùng đồng thời.
+
+    \item Một số chức năng nâng cao nhằm cải thiện trải nghiệm người dùng vẫn chưa được triển khai đầy đủ, chẳng hạn như hệ thống xếp hạng (ranking), lưu dữ liệu người chơi trên server, reconnect khi mất kết nối hoặc cơ chế chống gian lận trong môi trường multiplayer. Đây đều là những tính năng quan trọng cần được nghiên cứu và phát triển thêm trong tương lai.
+\end{itemize}
+
+\subsection{Kế hoạch tương lai}
+
+Trong tương lai, nhóm phát triển dự định tiếp tục mở rộng và hoàn thiện hệ thống nhằm nâng cao trải nghiệm người chơi cũng như cải thiện hiệu năng của trò chơi multiplayer. Một số định hướng phát triển chính bao gồm:
+
+\begin{itemize}
+    \item Mở rộng số lượng bản đồ (map), chế độ chơi và nội dung trong game nhằm tăng tính đa dạng và khả năng giải trí lâu dài cho người chơi. Các map trong tương lai sẽ được thiết kế với nhiều phong cách khác nhau, đồng thời bổ sung thêm các cơ chế gameplay mới để tạo sự khác biệt giữa các trận đấu.
+
+    \item Tối ưu hệ thống mạng thời gian thực để giảm độ trễ (latency), tăng tốc độ đồng bộ dữ liệu và cải thiện tính ổn định trong quá trình chơi online. Ngoài ra, nhóm cũng hướng tới việc tối ưu lượng dữ liệu truyền tải nhằm giảm băng thông sử dụng và tăng hiệu suất hoạt động trên các thiết bị cấu hình thấp.
+
+    \item Chuyển đổi từ mô hình Client-Host sang mô hình Client-Server nhằm nâng cao khả năng quản lý kết nối và đảm bảo tính ổn định cho hệ thống multiplayer. Việc sử dụng server chuyên biệt sẽ giúp giảm sự phụ thuộc vào thiết bị của người làm Host, đồng thời cải thiện trải nghiệm chơi game cho tất cả người chơi trong cùng lobby.
+
+    \item Tiếp tục kiểm thử hệ thống với số lượng lớn người chơi thực tế để đánh giá khả năng chịu tải, độ ổn định và khả năng mở rộng của trò chơi trong môi trường mạng thực tế. Các kết quả kiểm thử sẽ được sử dụng để tối ưu kiến trúc hệ thống và cải thiện hiệu năng tổng thể.
+
+    \item Phát triển thêm các tính năng nâng cao như hệ thống tài khoản, bảng xếp hạng (ranking), lưu dữ liệu người chơi trên server, reconnect khi mất kết nối, hệ thống bạn bè và mời bạn chơi cùng nhằm hoàn thiện trải nghiệm multiplayer.
+
+    \item Bổ sung các cơ chế bảo mật và chống gian lận (anti-cheat) nhằm đảm bảo tính công bằng trong quá trình chơi trực tuyến, đặc biệt khi trò chơi được mở rộng cho nhiều người chơi hơn trong tương lai.
+
+    \item Tối ưu giao diện người dùng (UI/UX), hiệu ứng hình ảnh và âm thanh để nâng cao tính thẩm mỹ cũng như trải nghiệm tổng thể của trò chơi trên nhiều nền tảng và độ phân giải khác nhau.
+\end{itemize}
+Dựa trên các kế hoạch chi tiết được đề ra, nhóm tin tưởng rằng có thể đưa trò chơi lên một tầm cao mới và có thể cho ra một phiên bản cập nhật cho trò chơi và thu hút được nhiều người dùng hơn nữa
