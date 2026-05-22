@@ -1,4 +1,44 @@
 \section{Đặc tả chi tiết các lược đồ}
+\subsection{Thiết kế kiến trúc tổng quan}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{4.Đặc tả chi tiết các lược đồ/Use-case/images/Architecture-diagram.png} 
+    \caption{Architecture diagram}
+\end{figure}
+
+Biểu đồ trên mô tả mô hình kiến trúc mạng phân tán dành cho trò chơi dạng Board Game nhiều người chơi, được xây dựng dựa trên giải pháp \textit{Netcode for GameObjects (NGO)} kết hợp với hệ sinh thái \textit{Unity Gaming Services (UGS)}. Hệ thống được chia thành hai phân vùng chính như sau:
+
+\begin{itemize}
+    \item \textbf{Unity Client Zone}: Bao gồm \textit{Host} (vừa đóng vai trò người chơi vừa hoạt động như Server xử lý logic trận đấu) và \textit{Client} (người chơi từ xa tương tác thông qua giao diện trò chơi).
+    
+    \item \textbf{UGS Backend}: Bao gồm các dịch vụ trung gian hỗ trợ xác thực người dùng, quản lý phòng chơi và truyền tải dữ liệu mạng thông qua cơ chế Relay nhằm vượt qua các giới hạn NAT.
+\end{itemize}
+
+\textbf{Quy trình vận hành hệ thống}
+
+Hệ thống vận hành thông qua ba giai đoạn chính như sau:
+
+\begin{itemize}
+    \item \textbf{Giai đoạn 1 - Xác thực tài khoản (Authentication):} Đây là bước khởi tạo bắt buộc trước khi người chơi tham gia vào hệ thống. Cả Host và Client đều phải gửi yêu cầu đăng nhập đến dịch vụ \textit{Authentication} của UGS để được cấp quyền truy cập và định danh người dùng trong hệ thống.
+
+    \item \textbf{Giai đoạn 2 - Khởi tạo và tìm kiếm phòng (Setup \& Matchmaking):}
+    \begin{itemize}
+        \item Host gửi yêu cầu cấp phát tài nguyên mạng đến \textit{Relay Server}, sau đó nhận về một mã \textit{Join Code}.
+        
+        \item Tiếp theo, Host tạo phòng chơi công khai trên \textit{Lobby Service} và đính kèm mã \textit{Join Code} để các Client có thể tham gia.
+        
+        \item Client truy cập \textit{Lobby Service} để tìm kiếm phòng phù hợp, lấy mã \textit{Join Code} và sử dụng mã này để thiết lập kết nối an toàn đến \textit{Relay Server}.
+    \end{itemize}
+
+    \item \textbf{Giai đoạn 3 - Đồng bộ và tương tác thời gian thực (Gameplay Loop):}
+    \begin{itemize}
+        \item Khi người chơi thực hiện thao tác trong trò chơi, Client sẽ gửi yêu cầu điều khiển thông qua cơ chế \textit{ServerRpc}. Dữ liệu được Relay Server chuyển tiếp về Host để xử lý logic trò chơi.
+        
+        \item Host thực hiện tính toán trạng thái bàn cờ, cập nhật dữ liệu trận đấu và đồng bộ kết quả trở lại các Client thông qua \textit{NetworkVariable} hoặc \textit{ClientRpc}.
+    \end{itemize}
+\end{itemize}
+
 \input{4.Đặc tả chi tiết các lược đồ/Use-case/main}
 
 \newpage
