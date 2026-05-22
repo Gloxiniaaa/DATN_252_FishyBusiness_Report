@@ -1,0 +1,49 @@
+\subsection{Nghiên cứu cách tối ưu hiệu năng Game}
+
+Trong quá trình phát triển game multiplayer 3D trên Unity, hiệu năng là một trong những yếu tố quan trọng ảnh hưởng trực tiếp đến trải nghiệm người chơi. Đặc biệt với trò chơi có nhiều người chơi cùng lúc, nhiều vật thể tương tác và hệ thống UI phức tạp như Fishy Business, số lượng Draw Calls cao hoặc FPS thấp có thể gây giật, lag và mất đồng bộ trong quá trình chơi. Vì vậy, nhóm đã nghiên cứu và áp dụng nhiều kỹ thuật tối ưu nhằm giảm tải cho CPU/GPU và duy trì tốc độ khung hình ổn định.
+
+\subsubsection{Giảm Draw Calls}
+
+Draw Call là số lần CPU gửi lệnh render đến GPU. Khi số lượng Draw Calls quá lớn, CPU sẽ trở thành nút thắt cổ chai, đặc biệt trong các cảnh có nhiều vật thể 3D hoặc UI.
+
+Nhóm áp dụng các giải pháp sau:
+
+\begin{itemize}
+    \item \textbf{Static Batching:}
+    Các vật thể tĩnh như bàn chơi, tường, ghế, vật trang trí được đánh dấu Static để Unity tự động gộp mesh khi build game, giúp giảm số lượng Draw Calls.
+
+    \item \textbf{GPU Instancing:}
+    Các object lặp lại nhiều lần như thẻ bài, props hoặc vật phẩm trang trí sử dụng cùng Material được bật GPU Instancing để GPU có thể render nhiều object trong một lần gọi.
+
+    \item \textbf{Dùng chung Material và Texture Atlas:}
+    Nhóm hạn chế sử dụng quá nhiều Material khác nhau. Các texture nhỏ được gộp thành Texture Atlas nhằm giúp nhiều object có thể dùng chung Material, từ đó giảm Draw Calls.
+
+    \item \textbf{Tối ưu UI Canvas:}
+    UI được chia thành nhiều Canvas nhỏ thay vì một Canvas lớn để tránh việc toàn bộ UI phải rebuild mỗi khi có thay đổi nhỏ.
+\end{itemize}
+
+\subsubsection{Tăng FPS}
+
+Để đảm bảo trò chơi đạt mục tiêu tối thiểu 60 FPS trên cấu hình tầm trung, nhóm nghiên cứu và áp dụng các phương pháp tối ưu sau:
+
+\begin{itemize}
+    \item \textbf{Occlusion Culling:}
+    Các object nằm ngoài tầm nhìn camera hoặc bị che khuất sẽ không được render, giúp giảm tải GPU.
+
+    \item \textbf{Giảm Polygon và Particle:}
+    Tối ưu model 3D và hạn chế particle phức tạp trong gameplay multiplayer để tránh tụt FPS khi nhiều người chơi cùng xuất hiện.
+
+    \item \textbf{Tối ưu Network Update:}
+    Không đồng bộ toàn bộ dữ liệu mỗi frame. Chỉ những thông tin quan trọng như vị trí nhân vật, animation hoặc hành động gameplay mới được gửi qua mạng nhằm giảm CPU usage và bandwidth.
+
+\end{itemize}
+
+\subsubsection{Kết quả mong đợi đạt được}
+
+Sau khi áp dụng các kỹ thuật tối ưu thì kết quả mong đợi đạt được:
+\begin{itemize}
+    \item Số lượng Draw Calls giảm đáng kể trong các scene multiplayer (dưới 1000 Draw Calls).
+    \item FPS duy trì ổn định quanh mức 60 FPS trên cấu hình máy tính tầm trung.
+    \item Hiện tượng giật lag khi nhiều người chơi cùng tương tác được giảm rõ rệt.
+    \item Thời gian tải scene và sử dụng bộ nhớ được cải thiện.
+\end{itemize}
