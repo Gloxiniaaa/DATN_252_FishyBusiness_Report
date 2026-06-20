@@ -60,9 +60,9 @@
 \usepackage{multicol}
 \usepackage{rotating}
 \usepackage{graphics}
-\usepackage{geometry}
+\usepackage[twoside]{geometry}
 \geometry{
-    left=2cm,      % lề trái
+    left=3cm,      % lề trái
     right=2cm,     % lề phải
     % top=2cm,         % lề trên
     % bottom=2cm,      % lề dưới
@@ -90,6 +90,7 @@
 
 %\usepackage{fancyhdr}
 \setlength{\headheight}{40pt}
+\setlength{\parindent}{2cm}
 \pagestyle{fancy}
 \fancyhead{} % clear all header fields
 \fancyhead[L]{
@@ -137,13 +138,13 @@
 
 % Khung ngoài
 \draw[line width=6pt]
-  ([xshift=2cm,yshift=-2cm]current page.north west)
+  ([xshift=3cm,yshift=-2cm]current page.north west)
   rectangle
   ([xshift=-2cm,yshift=2cm]current page.south east);
 
 % Khung trong
 \draw[line width=3pt]
-  ([xshift=2.3cm,yshift=-2.3cm]current page.north west)
+  ([xshift=3.3cm,yshift=-2.3cm]current page.north west)
   rectangle
   ([xshift=-2.3cm,yshift=2.3cm]current page.south east);
 
@@ -154,7 +155,7 @@
 \begin{center}
 \centering
 \Large
-\textbf{ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH \\
+\textbf{ĐẠI HỌC QUỐC GIA TP.HCM \\
 TRƯỜNG ĐẠI HỌC BÁCH KHOA \\
 KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH }
 
@@ -171,21 +172,22 @@ KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH }
 \begin{center}
 		{\LARGE \bf BÁO CÁO} \\
         {\LARGE \bf ĐỒ ÁN TỐT NGHIỆP}
-			\vspace*{1cm}
+			\vspace*{0.5cm}
 			\begin{center}
 				\fontsize{24pt}{30pt} \bf{PHÁT TRIỂN GAME}\\
                 \fontsize{24pt}{30pt}  \bf{FISHY BUSINESS} \\
-                \vspace{1cm}
+                \vspace{0.5cm}
 				\large \normalfont{NGÀNH: KHOA HỌC MÁY TÍNH}
 			\end{center}
 
 \vspace{1cm}
 
     \begin{tabular}{lll}
-    \Large \bf HỘI ĐỒNG: &\Large 4L Khoa học Máy tính & 
+    \Large \bf HỘI ĐỒNG: &\Large 4L Khoa học Máy tính & \\
+    \Large \bf GVHD:  &\Large Th.S Vương Bá Thịnh & \\
+    \Large \bf GVPB:  &\Large Th.S Trần Huy & 
     \vspace{0.2cm}\\
-    \Large \bf GVHD:  &\Large Th.S Vương Bá Thịnh & 
-    \vspace{0.2cm}\\
+    &   \rule[0.5ex]{1.5cm}{0.4pt}o0o\rule[0.5ex]{1.5cm}{0.4pt} &\\
     \Large \bf SVTH1:  &\Large Lê Ngọc Hiền &\Large 2211024 \\
     \Large \bf SVTH2:  &\Large Huỳnh Trần Học Đăng &\Large 2210731\\
     \Large \bf SVTH3:  &\Large Nguyễn Mạnh Hùng &\Large 2211337 \\
@@ -194,21 +196,17 @@ KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH }
     \vfill
     \vspace{0.5cm}
     \begin{center}
-    {\large Thành phố Hồ Chí Minh, tháng 5/2026}
+    {\large Thành phố Hồ Chí Minh, tháng 6/2026}
 \end{center}
 \end{titlepage}
 
-
 %\thispagestyle{empty}
-\newpage
 \input{LoiCamOn}
 \clearpage
 \setcounter{page}{1} % bắt đầu lại từ trang 1
 \newpage
 \tableofcontents
-\newpage
 \listoffigures
-
 \listoftables
 \newpage
 
@@ -230,4 +228,3 @@ KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH }
 
 \input{bib}
 \end{document}
-
